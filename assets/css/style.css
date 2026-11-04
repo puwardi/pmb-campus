@@ -2,9 +2,12 @@
 :root {
     --navy:#142f48;
     --blue:#dfecf5;
+    --blue-deep:#c5ddea;
     --cream:#faf9f5;
     --muted:#586b78;
-    --line:#d6dfe4
+    --line:#d6dfe4;
+    --green:#216c57;
+    --red:#8b4b43
 }
 
 * {
@@ -13,7 +16,10 @@
 
 body {
     margin:0;
-    background:var(--cream);
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    background:radial-gradient(circle at 90% 5%,#eaf3f8 0,transparent 28%),var(--cream);
     color:var(--navy);
     font-family:Segoe UI,Arial,sans-serif;
     font-size:16px;
@@ -27,7 +33,8 @@ a {
 
 header {
     background:var(--cream);
-    border-bottom:1px solid var(--line)
+    border-bottom:1px solid var(--line);
+    box-shadow:0 2px 12px rgba(20,47,72,.04)
 }
 
 .nav-wrap {
@@ -80,7 +87,9 @@ nav a:hover {
 }
 
 main {
+    width:100%;
     max-width:1200px;
+    flex:1;
     margin:auto;
     padding:48px 28px 80px;
     min-height:75vh
@@ -177,17 +186,22 @@ p {
     padding:12px 19px;
     text-decoration:none;
     font:600 14px/1.5 Segoe UI,Arial,sans-serif;
-    cursor:pointer
+    cursor:pointer;
+    box-shadow:0 5px 12px rgba(20,47,72,.12);
+    transition:transform .18s ease,box-shadow .18s ease,background .18s ease
 }
 
 .button:hover,button:hover {
-    filter:brightness(1.2)
+    filter:brightness(1.08);
+    transform:translateY(-2px);
+    box-shadow:0 8px 16px rgba(20,47,72,.18)
 }
 
 .secondary {
     background:transparent;
     color:var(--navy);
-    border-color:#aabcca
+    border-color:#aabcca;
+    box-shadow:none
 }
 
 .nav-button {
@@ -222,11 +236,12 @@ p {
 }
 
 .card,.auth-card {
-    background:#fff;
+    background:rgba(255,255,255,.9);
     border:1px solid var(--line);
-    border-radius:7px;
+    border-radius:10px;
     padding:32px;
-    margin:24px 0
+    margin:24px 0;
+    box-shadow:0 12px 30px rgba(20,47,72,.07)
 }
 
 .form-card {
@@ -310,8 +325,10 @@ textarea {
 
 .stats article {
     padding:22px;
-    background:var(--blue);
-    border-radius:5px
+    background:linear-gradient(145deg,#eaf4f9,var(--blue));
+    border:1px solid #d0e1ea;
+    border-radius:9px;
+    box-shadow:0 6px 16px rgba(20,47,72,.06)
 }
 
 .stats span {
@@ -381,6 +398,26 @@ tr:last-child td {
     font-weight:650
 }
 
+.result-card {
+    border-top:4px solid var(--navy);
+    max-width:800px
+}
+
+.score-panel {
+    background:linear-gradient(135deg,var(--blue),#f6fbfd);
+    border:1px solid #cbdfe9;
+    border-radius:9px;
+    padding:20px 24px;
+    margin:24px 0
+}
+
+.score-label {
+    color:var(--muted);
+    font-size:11px;
+    font-weight:750;
+    letter-spacing:2px
+}
+
 .empty {
     text-align:center;
     padding:45px;
@@ -441,6 +478,23 @@ tr:last-child td {
     margin-left:10px
 }
 
+.status-pill {
+    display:inline-block;
+    border-radius:999px;
+    padding:5px 14px;
+    font-size:15px
+}
+
+.status-passed {
+    color:var(--green);
+    background:#e2f2eb
+}
+
+.status-failed {
+    color:var(--red);
+    background:#f7e9e5
+}
+
 dt {
     font-size:13px;
     color:var(--muted)
@@ -455,6 +509,7 @@ dd {
 
 footer {
     border-top:1px solid var(--line);
+    width:100%;
     max-width:1144px;
     margin:auto;
     padding:25px 0;
